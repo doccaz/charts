@@ -36,6 +36,14 @@ cloudConfig:
   secretName: ""
   hostPath: "/var/lib/rancher/rke2/etc/config-files/"
 
+podSecurityContext: {}
+# On SELinux-enforcing nodes (e.g. RKE2 on RHEL/SUSE), set this to allow
+# the controller sidecars to connect to the socket created by the privileged
+# DaemonSet containers:
+#   podSecurityContext:
+#     seLinuxOptions:
+#       type: spc_t
+
 nodeSelector:
   kubernetes.io/os: linux
 
